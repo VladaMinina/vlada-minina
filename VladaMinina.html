@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Vlada Minina - Junior Software Developer Portfolio">
+  <meta name="author" content="Vlada Minina">
+  <title>Vlada Minina | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <style>
+    /* Global Styles */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Inter', sans-serif;
+    }
+
+    body {
+      background: linear-gradient(135deg, #f0f4f8, #e6edf3);
+      color: #333;
+      line-height: 1.6;
+      text-align: justify;
+    }
+
+    .root-info {
+        display: flex;
+        justify-content: space-around;
+        flex-wrap: wrap;
+    }
+
+    a {
+      color: #007BFF;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    h1, h2, h3 {
+      color: #2c3e50;
+      margin-bottom: 1rem;
+    }
+
+    ul {
+      list-style-type: none;
+    }
+
+    section {
+      padding: 1.5rem 2rem;
+      max-width: 1200px;
+      margin: auto;
+    }
+
+    /* Header Section */
+    header {
+      background: #007BFF;
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    header p {
+      font-size: 1.2rem;
+    }
+
+    /* Profile Photo Section */
+    .profile-photo {
+      text-align: center;
+      margin: 1rem 0;
+    }
+
+    .profile-photo img {
+        width: 100%;
+      max-width: 450px;
+    }
+
+    /* Contact Section */
+    .contact {
+      display: flex;
+      flex-direction: column;
+      justify-content: left;
+      gap: 1rem;
+      margin: 1.2rem 0;
+    }
+
+    .contact a {
+      font-size: 1.5rem;
+      color: #007BFF;
+    }
+
+    /* Skills Section */
+    .skills {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .skills .skill-item {
+      background: #fff;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin: 0.5rem;
+      padding: 1rem;
+      width: calc(33.33% - 1rem);
+      text-align: center;
+    }
+
+    .skills .skill-item h3 {
+      font-size: 1.1rem;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Footer */
+    footer {
+      background: #333;
+      color: #fff;
+      text-align: center;
+      padding: 1rem 0;
+    }
+
+    footer a {
+      color: #007BFF;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+      .skills .skill-item {
+        width: calc(50% - 1rem);
+      }
+
+      .contact {
+        flex-wrap: wrap;
+      }
+    }
+
+    @media (max-width: 480px) {
+      header h1 {
+        font-size: 2rem;
+      }
+
+      .skills .skill-item {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>Vlada Minina</h1>
+    <p>Software Developer | Building Scalable Applications</p>
+  </header>
+
+    <section class="root-info">
+    <div class="profile-photo">
+        <img src="VLM.jpeg" alt="Vlada Minina Profile Photo">
+    </div>
+
+    <div>
+        <h2>Contact Information</h2>
+        <div class="contact">
+        <p><a href="mailto:04vlada07@gmail.com"><i class="fas fa-envelope"></i></a> 04vlada07@gmail.com</p>
+        <!-- <p>GitHub: <a href="https://github.com/VladaMinina"><i class="fab fa-github"></i></a></p> -->
+        <p><a href="https://www.linkedin.com/in/vlada-minina/"><i class="fab fa-linkedin"></i></a> Vlada Minina</p>
+        <p><a href="tel:+972546648681"><i class="fas fa-phone"></i></a> +972 54 6648681</p>
+        </div>
+    </div>
+    </section>
+
+  <section>
+    <h2>About Me</h2>
+    <p>
+      I am a Software Developer with a strong foundation in engineering and a passion for crafting scalable applications.
+      I am eager to learn new technologies, solve challenging problems, and collaborate on impactful projects.
+    </p>
+  </section>
+
+  <section>
+    <h2>Skills</h2>
+    <div class="skills">
+      <div class="skill-item">
+        <h3>Languages</h3>
+        <p>JavaScript, Python(basic), Java, C</p>
+      </div>
+      <div class="skill-item">
+        <h3>Frameworks</h3>
+        <p>React, Node.js, Express, Mongosh, Redux</p>
+      </div>
+      <div class="skill-item">
+        <h3>Tools</h3>
+        <p>Git, Docker, Webpack, Vite, JWT</p>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Featured Project</h2>
+    <p>
+      <strong>Web Banking Application:</strong> A full-stack application for secure money transfers between users.
+    </p>
+    <ul>
+      <li><strong>Backend:</strong> Node.js (Express)</li>
+      <li><strong>Frontend:</strong> React with Redux</li>
+      <li><strong>Database:</strong> MongoDB</li>
+      <li><strong>Docker container</strong></li>
+    </ul>
+    </section>
+    <section>
+    <p>
+      <strong>IOT Infrastructure:</strong> A full-stack application that allows to process and store updates from IOT.
+    </p>
+    <ul>
+      <li><strong>Backend:</strong>Java</li>
+      <li><strong>Frontend:</strong> React</li>
+      <li><strong>Database:</strong> MySql</li>
+      <li><strong>Docker</strong> container(front+back, MongoDB)</li>
+      <!-- <li><strong><a href="">GitHub link</a></strong></li> -->
+    </ul>
+  </section>
+
+  <section>
+    <p>
+        <strong>Threadpool:</strong> Design pattern. Multiple threads waiting for tasks to be executed in multithreaded environment.
+      </p>
+      <ul>
+        <li><strong>Backend: </strong>Java</li>
+        <li>Concurrency</li>
+  </section>
+  <section>
+    <p>
+        <strong>WatchDog</strong>
+      </p>
+      <ul>
+        <li><strong>Backend:</strong>C</li>
+        <li>Multiprocessing communication</li>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 Vlada Minina | <a href="mailto:04vlada07@gmail.com">Contact Me</a></p>
+  </footer>
+
+</body>
+</html>
