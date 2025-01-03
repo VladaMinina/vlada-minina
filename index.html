@@ -1,15 +1,40 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Vlada Minina - Junior Software Developer Portfolio">
   <meta name="author" content="Vlada Minina">
+  <meta name="keywords" content="Portfolio, Full Stack Developer, JavaScript, React, Node.js">
+  <meta name="theme-color" content="#007BFF">
   <title>Vlada Minina | Portfolio</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css">
   <style>
-    /* Global Styles */
+
+    :root {
+      --bg-color: #f0f4f8;
+      --window-color: #cdcdcd7d;
+      --text-color: #333;
+      --accent-color: #56a8ff;
+      --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+
+    [data-theme="dark"] {
+      --bg-color: #282731;
+      --window-color: #565656;
+      --text-color: #fff;
+      --accent-color: #333;
+      --box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.4);
+    }
+
+    [data-theme] {
+    transition: background-color 0.8s ease, color 0.8s ease, border-color 0.8s ease;
+}
+
+
     * {
       margin: 0;
       padding: 0;
@@ -18,51 +43,58 @@
     }
 
     body {
-      background: linear-gradient(135deg, #f0f4f8, #e6edf3);
-      color: #333;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       line-height: 1.6;
       text-align: justify;
-    }
-
-    .root-info {
-        display: flex;
-        justify-content: space-around;
-        flex-wrap: wrap;
+      scroll-behavior: smooth;
     }
 
     a {
-      color: #007BFF;
+      color: var(--accent-color);
       text-decoration: none;
+      transition: color 0.3s ease-in-out;
     }
 
     a:hover {
-      text-decoration: underline;
+      color: #0056b3;
     }
 
     h1, h2, h3 {
-      color: #2c3e50;
+      color: var(--text-color);
       margin-bottom: 1rem;
     }
 
-    ul {
-      list-style-type: none;
-    }
 
     section {
       padding: 1.5rem 2rem;
       max-width: 1200px;
+      color: var(--text-color);
       margin: auto;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease-out, transform 0.6s ease-out;
     }
 
-    /* Header Section */
+    section.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    ul {
+      text-align:justify;
+    }
+
+    /* Header */
     header {
-      background: #007BFF;
+      background: var(--accent-color);
       color: #fff;
       padding: 1rem;
       text-align: center;
       position: sticky;
       top: 0;
       z-index: 1000;
+      box-shadow: var(--box-shadow);
     }
 
     header h1 {
@@ -70,60 +102,196 @@
       margin-bottom: 0.5rem;
     }
 
-    header p {
-      font-size: 1.2rem;
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
     }
 
-    /* Profile Photo Section */
+    nav a {
+      font-weight: 600;
+      color: #fff;
+    }
+
+    nav a:hover {
+      text-decoration: underline;
+    }
+
+    /* Dark Mode Toggle */
+    #theme-toggle {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 1.5rem;
+      cursor: pointer;
+      transition: transform 0.3s;
+    }
+
+    #theme-toggle:hover {
+      transform: scale(1.2);
+    }
+
+    /* Profile Photo */
     .profile-photo {
       text-align: center;
       margin: 1rem 0;
     }
 
     .profile-photo img {
-        width: 100%;
+      width: 100%;
       max-width: 450px;
+      box-shadow: var(--box-shadow);
     }
 
     /* Contact Section */
     .contact {
       display: flex;
       flex-direction: column;
-      justify-content: left;
       gap: 1rem;
       margin: 1.2rem 0;
     }
 
     .contact a {
       font-size: 1.5rem;
-      color: #007BFF;
+      color: var(--accent-color);
     }
 
-    /* Skills Section */
+    .contact a:hover i {
+      transform: scale(1.2);
+      transition: transform 0.3s ease-in-out;
+    }
+
+    /* Skills */
     .skills {
       display: flex;
       flex-wrap: wrap;
       justify-content: space-between;
+      
+      @media (max-width: 768px){
+        flex-direction: column;
+      }
     }
 
     .skills .skill-item {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      flex-direction: column;
+      align-items: center;
       background: #fff;
-      border: 1px solid #ddd;
       border-radius: 8px;
+      background: var(--window-color);
+      color: var(--text-color);
+      box-shadow: var(--box-shadow);
       margin: 0.5rem;
       padding: 1rem;
       width: calc(33.33% - 1rem);
       text-align: center;
+      transition: transform 0.2s;
+
+      @media (max-width: 768px){
+        width: 100%;
+        margin: 1rem 0;
+      }
     }
 
-    .skills .skill-item h3 {
-      font-size: 1.1rem;
-      margin-bottom: 0.5rem;
+    .skills .skill-item:hover {
+      transform: scale(1.05);
     }
 
-    /* Footer */
+    /* Projects */
+    .project-list {
+      display: flex;
+      color: var(--text-color);
+      gap: 1.5rem;
+      justify-content: space-between;
+
+      @media (max-width: 768px) {
+      flex-direction: column;
+    }
+    }
+
+    .project-item {
+      background-color: var(--window-color);
+      color: var(--text-color);
+      border-radius: 8px;
+      box-shadow: var(--box-shadow);
+      
+      padding: 1rem;
+      width: calc(48% - 1rem);
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+
+    .project-item:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    @media (max-width: 768px) {
+      .project-item {
+        width: 100%;
+      }
+    }
+
+    /* Modal */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.8);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .modal-content {
+      background: var(--bg-color);
+      box-shadow: var(--box-shadow);
+      overflow-y: auto;
+      padding: 2rem;
+      border-radius: 10px;
+      height: 90%;
+      max-width: 80%;
+      text-align: center;
+      color: var(--text-color);
+      position: relative;
+
+      @media (max-width: 768px) {
+        max-width: 95%;
+      }
+    }
+
+    .title {
+      background-color: var(--accent-color);
+    }
+
+    .close-modal {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--text-color);
+    }
+
+    .skill-icon {
+      font-size: 24px;
+      margin-right: 8px;
+      vertical-align: middle;
+      color: #4caf50; /* Adjust to match your site's theme */
+    }
+
+        /* Footer */
     footer {
-      background: #333;
+      background: var(--accent-color);
       color: #fff;
       text-align: center;
       padding: 1rem 0;
@@ -133,122 +301,290 @@
       color: #007BFF;
     }
 
-    /* Responsive Design */
-    @media (max-width: 768px) {
-      .skills .skill-item {
-        width: calc(50% - 1rem);
-      }
-
-      .contact {
-        flex-wrap: wrap;
-      }
-    }
-
-    @media (max-width: 480px) {
-      header h1 {
-        font-size: 2rem;
-      }
-
-      .skills .skill-item {
-        width: 100%;
-      }
-    }
   </style>
 </head>
 <body>
-
   <header>
     <h1>Vlada Minina</h1>
     <p>Software Developer | Building Scalable Applications</p>
+    <nav>
+      <a href="#about">About</a>
+      <a href="#skills">Skills</a>
+      <a href="#projects">Projects</a>
+    </nav>
+    <button id="theme-toggle" aria-label="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
   </header>
 
-    <section class="root-info">
+  <section id="about">
     <div class="profile-photo">
-        <img src="VLM.jpeg" alt="Vlada Minina Profile Photo">
+      <img src="VLM.jpeg" alt="Vlada Minina Profile Photo" loading="lazy">
     </div>
-
-    <div>
-        <h2>Contact Information</h2>
-        <div class="contact">
-        <p><a href="mailto:04vlada07@gmail.com"><i class="fas fa-envelope"></i></a> 04vlada07@gmail.com</p>
-        <!-- <p>GitHub: <a href="https://github.com/VladaMinina"><i class="fab fa-github"></i></a></p> -->
-        <p><a href="https://www.linkedin.com/in/vlada-minina/"><i class="fab fa-linkedin"></i></a> Vlada Minina</p>
-        <p><a href="tel:+972546648681"><i class="fas fa-phone"></i></a> +972 54 6648681</p>
-        </div>
-    </div>
-    </section>
-
-  <section>
     <h2>About Me</h2>
-    <p>
-      I am a Software Developer with a strong foundation in engineering and a passion for crafting scalable applications.
-      I am eager to learn new technologies, solve challenging problems, and collaborate on impactful projects.
-    </p>
+    <p>  I am a <strong>Full Stack Developer</strong> with a strong engineering background and a passion for building scalable, user-friendly applications. 
+      Having completed a Full Stack Development course, I specialize in <strong>seamless front-end design</strong> and <strong>robust back-end development</strong>.
+       As a <strong>collaborative team player</strong>, I thrive in solving challenges and contributing to impactful projects. 
+       Always <strong>eager to learn new technologies</strong> and expand my knowledge, I am committed to delivering innovative and high-quality solutions.
+ </p>
   </section>
 
-  <section>
+  <section id="skills">
     <h2>Skills</h2>
     <div class="skills">
       <div class="skill-item">
-        <h3>Languages</h3>
-        <p>JavaScript, Python(basic), Java, C</p>
+        <h3>Knowledges</h3>
+        <p>
+          <i class="devicon-javascript-plain skill-icon" title="JavaScript"></i> JavaScript<br>
+          <i class="devicon-nodejs-plain skill-icon" title="NodeJS"></i> NodeJS<br>
+          <i class="devicon-python-plain skill-icon" title="Python"></i> Python (basic)<br>
+          <i class="devicon-java-plain skill-icon" title="Java"></i> Java<br>
+          <i class="devicon-c-plain skill-icon" title="C"></i> C<br>
+          <i class="devicon-html-plain skill-icon" title="HTML"></i> HTML<br>
+          <i class="devicon-css-plain skill-icon" title="CSS"></i> CSS<br>
+        </p>
       </div>
       <div class="skill-item">
-        <h3>Frameworks</h3>
-        <p>React, Node.js, Express, Mongosh, Redux</p>
+        <h3>Frameworks/Messaging/ Protocols/Libraries/ Databases</h3>
+        <p>
+          <i class="devicon-react-original skill-icon" title="React"></i> React<br>
+          <i class="devicon-express-original skill-icon" title="Express"></i> Express<br>
+          <i class="devicon-mongodb-plain skill-icon" title="MongoDB"></i> Mongosh<br>
+          <i class="devicon-redux-original skill-icon" title="Redux"></i> Redux<br>
+          <i class="devicon-mysql-plain skill-icon" title="MySQL"></i> MySQL<br>
+          <i class="devicon-rabbitmq-plain skill-icon" title="RabbitMQ"></i> RabbitMQ<br>
+          <i class="devicon-websocket-plain skill-icon" title="WebSocket"></i> WebSocket<br>
+        </p>
       </div>
       <div class="skill-item">
         <h3>Tools</h3>
-        <p>Git, Docker, Webpack, Vite, JWT</p>
+        <p>
+          <i class="devicon-git-plain skill-icon" title="Git"></i> Git<br>
+          <i class="devicon-docker-plain skill-icon" title="Docker"></i> Docker<br>
+          <i class="devicon-webpack-plain skill-icon" title="Webpack"></i> Webpack<br>
+          <i class="devicon-vitejs-plain skill-icon" title="Vite"></i> Vite<br>
+          <i class="devicon-jwt-plain skill-icon" title="JWT"></i> JWT<br>
+          <i class="devicon-swagger-plain colored skill-icon" title="Swagger"></i> Swagger<br>
+          <i class="devicon-figma-plain colored skill-icon" title="Figma"></i> Figma<br>
+          <!-- <i class="devicon-reddit-plain colored skill-icon" title="Reddit"></i> Reddit -->
+        </p>
       </div>
     </div>
   </section>
+  
 
-  <section>
-    <h2>Featured Project</h2>
-    <p>
-      <strong>Web Banking Application:</strong> A full-stack application for secure money transfers between users.
-    </p>
-    <ul>
-      <li><strong>Backend:</strong> Node.js (Express)</li>
-      <li><strong>Frontend:</strong> React with Redux</li>
-      <li><strong>Database:</strong> MongoDB</li>
-      <li><strong>Docker container</strong></li>
-    </ul>
-    </section>
-    <section>
-    <p>
-      <strong>IOT Infrastructure:</strong> A full-stack application that allows to process and store updates from IOT.
-    </p>
-    <ul>
-      <li><strong>Backend:</strong>Java</li>
-      <li><strong>Frontend:</strong> React</li>
-      <li><strong>Database:</strong> MySql</li>
-      <li><strong>Docker</strong> container(front+back, MongoDB)</li>
-      <!-- <li><strong><a href="">GitHub link</a></strong></li> -->
-    </ul>
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="project-list">
+      <div class="project-item" data-title="Web Banking Application">
+      <h3>Web Banking Application</h3>
+      <p>A full-stack application enabling money transfers between authenticated users.</p>
+    </div>
+    <div class="project-item" data-title="Generic IoT Infrastructure">
+      <h3>Generic IoT Infrastructure</h3>
+      <p>An advanced IoT system for managing and processing device data dynamically.</p>
+    </div>    
   </section>
 
-  <section>
-    <p>
-        <strong>Threadpool:</strong> Design pattern. Multiple threads waiting for tasks to be executed in multithreaded environment.
-      </p>
-      <ul>
-        <li><strong>Backend: </strong>Java</li>
-        <li>Concurrency</li>
-  </section>
-  <section>
-    <p>
-        <strong>WatchDog</strong>
-      </p>
-      <ul>
-        <li><strong>Backend:</strong>C</li>
-        <li>Multiprocessing communication</li>
-  </section>
 
+  <div id="project-modal" class="modal">
+    <div class="modal-content">
+      <span class="close-modal">&times;</span>
+      <div id="modal-dynamic-content"></div>
+    </div>
+  </div>
+  </div>
+  
   <footer>
     <p>&copy; 2024 Vlada Minina | <a href="mailto:04vlada07@gmail.com">Contact Me</a></p>
   </footer>
 
+  <script>
+    const toggle = document.getElementById('theme-toggle');
+    const html = document.documentElement;
+    toggle.addEventListener('click', () => {
+      const currentTheme = html.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      html.setAttribute('data-theme', newTheme);
+      const icon = toggle.querySelector('i');
+      icon.className = newTheme === 'dark' ? 'fas fa-sun' : 'fas fa-moon';
+    });
+
+    const sections = document.querySelectorAll('section');
+    const revealOnScroll = () => {
+      sections.forEach(section => {
+        const sectionTop = section.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if (sectionTop < windowHeight - 50) {
+          section.classList.add('visible');
+        }
+      });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    revealOnScroll();
+    const modal = document.getElementById('project-modal');
+const closeModal = modal.querySelector('.close-modal');
+const modalContent = document.getElementById('modal-dynamic-content');
+
+// Define detailed content for each project
+const projectDetails = {
+  'Web Banking Application': `
+      <div class="pop-up-window">
+        <div class='title'>
+          <h1>Web Banking Application</h1>
+          <p>A full-stack study project that allows authenticated users to securely transfer money between each other.</p>
+        </div>
+
+        <div class="section">
+          <h2>Technology Stack</h2>
+          <p>This project is built using the following technologies:</p>
+          <ul>
+            <li><span class="highlight">Backend</span>: Node.js with Express</li>
+            <li><span class="highlight">Frontend</span>: React with Redux</li>
+            <li><span class="highlight">Database</span>: MongoDB (NoSQL)</li>
+            <li><span class="highlight">Containerization</span>: Docker</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Key Features</h2>
+          <h3>User Functionality</h3>
+          <ul>
+            <li><strong>Sign-Up:</strong> Users sign up with email, phone, and password. Frontend and backend validation ensure unique email and secure password storage (hashed).</li>
+            <li><strong>Email Verification:</strong> Users must validate their email with a 6-digit code sent via Nodemailer before activating their account.</li>
+            <li><strong>Login and Authentication:</strong> Uses JWT-based authentication for secure, stateless user sessions. Blacklist implemented to address token theft concerns.</li>
+            <li><strong>Account Management:</strong> Logged-in users can view their current balance and transaction history.</li>
+            <li><strong>Money Transfers:</strong> Users can transfer money to other active users, with each transaction securely recorded.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h3>Admin Functionality</h3>
+          <p>The project includes a <span class="highlight">Role-Based Authorization System</span> for enhanced admin capabilities:</p>
+          <ul>
+            <li>Admins can view all users and transactions, delete users, and manage permissions and roles.</li>
+            <li>Implemented using the <span class="highlight">Permify</span> microservice, which uses its own database for scalability and modularity.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Additional Features</h2>
+          <ul>
+            <li><strong>Security:</strong> Passwords are hashed, and a JWT blacklist prevents token misuse.</li>
+            <li><strong>Containerization:</strong> Docker ensures consistent deployment across environments.</li>
+            <li><strong>Configuration Management:</strong> dotenv is used to manage sensitive information.</li>
+            <li><strong>Architecture:</strong> Adheres to MVC principles with structured models, routes, middlewares, and controllers.</li>
+            <li><strong>Testing:</strong> Comprehensive testing on API endpoints and features.</li>
+          </ul>
+        </div>
+
+        <div class="section">
+          <h2>Future Work</h2>
+          <ul>
+            <li>Enhancing the role-based authorization system.</li>
+            <li>Adding support for additional payment gateways.</li>
+            <li>Improving the frontend UI/UX for a better user experience.</li>
+          </ul>
+        </div>
+      </div>
+  `,
+  'Generic IoT Infrastructure': `
+    <div class="pop-up-window">
+      <div class='title'>
+      <h1>Generic IoT Infrastructure</h1>
+      <p>An advanced project designed to handle and process IoT-related requests dynamically and efficiently.</p>
+      </div>
+      <div class="section">
+      <h2>Key Objectives</h2>
+      <ul>
+        <li><span class="highlight">Dynamic Command Execution</span>: Handle incoming IoT requests with support for dynamically loading external plugins.</li>
+        <li><span class="highlight">Flexibility</span>: Manage operations like registering companies, products, and IoT devices.</li>
+        <li><span class="highlight">Efficiency</span>: Process requests in a multi-threaded environment to ensure high performance.</li>
+        <li><span class="highlight">Scalability</span>: Build a system that can grow with the scale and complexity of IoT applications.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Technology Stack</h2>
+      <ul>
+        <li><strong>Backend:</strong> Java (core logic and server-side processing)</li>
+        <li><strong>Frontend:</strong> React (for an intuitive user interface)</li>
+        <li><strong>Database:</strong> MySQL (relational database for structured data)</li>
+        <li><strong>Communication Protocols:</strong> TCP/UDP/HTTP (for reliable and flexible data transfer)</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Core Features</h2>
+      <ul>
+        <li><strong>Dynamic Plugin Loading:</strong> Load external command plugins dynamically using the Observer Pattern.</li>
+        <li><strong>Concurrent Request Handling:</strong> Process multiple client requests simultaneously using a Thread Pool Pattern.</li>
+        <li><strong>Modular Command Management:</strong> Extendable commands built using the Factory Pattern and reflection.</li>
+        <li><strong>Flexible Protocol Support:</strong> TCP, UDP, and HTTP support for diverse IoT use cases.</li>
+        <li><strong>Database Integration:</strong> Store company, product, and device data in MySQL with optimized queries.</li>
+        <li><strong>Comprehensive Frontend:</strong> React-based UI for managing companies, products, and devices.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Design Patterns in Action</h2>
+      <ul>
+        <li><span class="highlight">Factory Pattern:</span> Dynamically map command types to their creation logic for modularity.</li>
+        <li><span class="highlight">Thread Pool Pattern:</span> Efficiently manage concurrent execution of commands.</li>
+        <li><span class="highlight">Observer Pattern:</span> Monitor plugin directory changes for dynamic updates.</li>
+        <li><span class="highlight">Strategy Pattern:</span> Encapsulate the creation logic for flexible instantiation of various commands.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Use Cases</h2>
+      <ul>
+        <li><strong>IoT Device Management:</strong> Register devices, update configurations, and monitor statuses.</li>
+        <li><strong>Company and Product Registration:</strong> Manage profiles and product registries efficiently.</li>
+        <li><strong>Dynamic Adaptation:</strong> Extend functionality by adding new commands via plugins without restarting the server.</li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h2>Conclusion</h2>
+      <p>
+        The <span class="highlight">Generic IoT Infrastructure</span> demonstrates a modular and extensible approach to IoT system development.
+        By leveraging modern technologies and design patterns, this project is a powerful framework for managing IoT devices and company operations dynamically and efficiently.
+      </p>
+      <p>Thank you for your attention. I am happy to address any questions!</p>
+    </div>
+    </div>
+  `,
+};
+
+// Attach click event listeners to project items
+document.querySelectorAll('.project-item').forEach(item => {
+  item.addEventListener('click', () => {
+    const projectTitle = item.dataset.title;
+    const content = projectDetails[projectTitle]; // Get detailed content
+
+    if (content) {
+      modalContent.innerHTML = content; // Insert the content into modal
+      modal.style.display = 'flex'; // Show modal
+    } else {
+      modalContent.innerHTML = '<p>Content not available.</p>'; // Fallback content
+    }
+  });
+});
+
+// Close modal on 'X' button click
+closeModal.addEventListener('click', () => {
+  modal.style.display = 'none';
+});
+
+// Close modal when clicking outside the modal content
+window.addEventListener('click', e => {
+  if (e.target === modal) {
+    modal.style.display = 'none';
+  }
+});
+
+
+  </script>
 </body>
 </html>
